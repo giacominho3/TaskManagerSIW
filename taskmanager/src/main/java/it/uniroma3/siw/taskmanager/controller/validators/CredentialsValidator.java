@@ -1,4 +1,4 @@
-package it.uniroma3.siw.taskmanager.validators;
+package it.uniroma3.siw.taskmanager.controller.validators;
 
 import org.springframework.validation.Validator;
 import org.springframework.beans.factory.annotation.Autowired;

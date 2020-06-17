@@ -3,6 +3,7 @@ package it.uniroma3.siw.taskmanager.service;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,6 +12,9 @@ import it.uniroma3.siw.taskmanager.repository.CredentialsRepository;
 
 @Service
 public class CredentialsService {
+	
+	@Autowired
+	protected PasswordEncoder passwordEncoder;
 	
 	@Autowired 
 	public CredentialsRepository credentialsRepository;
@@ -31,6 +35,7 @@ public class CredentialsService {
 	@Transactional
 	public Credentials saveCredentials (Credentials credentials) {
 		credentials.setRole(Credentials.DEFAULT_ROLE);
+		credentials.setPassword(this.passwordEncoder.encode(credentials.getPassword()));
 		return this.credentialsRepository.save(credentials);
 	}
 
