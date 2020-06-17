@@ -27,8 +27,11 @@ public class Project {
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@Column
+	@Column (nullable = false)
 	private String name;
+	
+	@Column
+	private String description;
 	
 	@Column (updatable = false, nullable = false)
 	private LocalDateTime creationTimeStamp;
@@ -87,6 +90,14 @@ public class Project {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public LocalDateTime getCreationTimeStamp() {

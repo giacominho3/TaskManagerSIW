@@ -2,11 +2,13 @@ package it.uniroma3.siw.taskmanager.controller.validators;
 
 import org.springframework.validation.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 
 import it.uniroma3.siw.taskmanager.model.Credentials;
 import it.uniroma3.siw.taskmanager.service.CredentialsService;
 
+@Component
 public class CredentialsValidator implements Validator {
 	
 	@Autowired
@@ -40,8 +42,8 @@ public class CredentialsValidator implements Validator {
 
 	@Override
 	public boolean supports(Class<?> clazz) {
-		// TODO Auto-generated method stub
-		return false;
+
+		return Credentials.class.equals(clazz);
 	}
 
 }
