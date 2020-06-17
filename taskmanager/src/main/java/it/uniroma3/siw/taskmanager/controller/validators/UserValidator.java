@@ -1,10 +1,12 @@
 package it.uniroma3.siw.taskmanager.controller.validators;
 
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import it.uniroma3.siw.taskmanager.model.User;
 
+@Component
 public class UserValidator implements Validator {
 	
 	final int MAX_NAME_LENGTH = 100;
@@ -29,8 +31,8 @@ public class UserValidator implements Validator {
 
 	@Override
 	public boolean supports(Class<?> clazz) {
-		// TODO Auto-generated method stub
-		return false;
+
+		return User.class.equals(clazz);
 	}
 
 }
