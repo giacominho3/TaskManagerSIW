@@ -29,13 +29,16 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
 			.authorizeRequests()
 			.antMatchers(HttpMethod.GET, "/", "/index", "/login", "/users/registers").permitAll()
 			.antMatchers(HttpMethod.POST, "/login", "/users/registers").permitAll()
-			.antMatchers(HttpMethod.GET, "/admin").hasAnyAuthority(ADMIN_ROLE)
+			.antMatchers(HttpMethod.GET, "/admin/**").hasAnyAuthority(ADMIN_ROLE)
+			.antMatchers(HttpMethod.POST, "/admin/**").hasAnyAuthority(ADMIN_ROLE)
 			.anyRequest().authenticated()
 			.and().formLogin()
 			.defaultSuccessUrl("/home")
 			.and().logout()
 			.logoutUrl("/logout")
-			.logoutSuccessUrl ("/index");
+			.logoutSuccessUrl ("/index")
+			.invalidateHttpSession(true)
+			.clearAuthentication(true).permitAll();
 		
 	}
 	
@@ -43,7 +46,7 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		
 		auth.jdbcAuthentication()
-			.dataSource(this.datasource)
+			.dataSource((javax.sql.DataSource) this.datasource)
 			.authoritiesByUsernameQuery("SELECT username, role FROM credentials WHERE username = ?")
 			.usersByUsernameQuery("SELECT username, password, 1 as enabled FROM credentials WHERE username = ?");
 	}
