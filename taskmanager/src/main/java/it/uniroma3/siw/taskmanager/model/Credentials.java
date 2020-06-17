@@ -52,7 +52,7 @@ public class Credentials {
 	}
 
 
-	public void setpassword(String password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 	

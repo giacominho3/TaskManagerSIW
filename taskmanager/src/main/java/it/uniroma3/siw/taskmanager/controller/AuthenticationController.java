@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import it.uniroma3.siw.taskmanager.controller.validators.CredentialsValidator;
+import it.uniroma3.siw.taskmanager.controller.validators.UserValidator;
 import it.uniroma3.siw.taskmanager.model.Credentials;
 import it.uniroma3.siw.taskmanager.model.User;
 import it.uniroma3.siw.taskmanager.service.CredentialsService;
-import it.uniroma3.siw.taskmanager.validators.CredentialsValidator;
-import it.uniroma3.siw.taskmanager.validators.UserValidator;
 
 public class AuthenticationController {
 	
