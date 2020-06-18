@@ -49,7 +49,7 @@ public class Project {
 	private List <User> members;
 	
 	@OneToMany (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn (name = "projectId")
+	@JoinColumn (name = "project_id")
 	private List <Task> tasks;
 	
 	

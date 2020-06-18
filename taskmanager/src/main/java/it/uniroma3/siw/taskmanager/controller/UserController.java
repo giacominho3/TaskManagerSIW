@@ -59,13 +59,5 @@ public class UserController {
 		return "allUsers";
 	}
 	
-	
-	@RequestMapping (value = {"/admin/users/{username}/delete"}, method = RequestMethod.POST)
-	public String deleteUser (Model model, @PathVariable String username) {
-		this.credentialsService.deleteCredentials(username);
-		
-		return "redirect:/admin/users";
-	}
-	
 }
 

@@ -1,14 +1,15 @@
 package it.uniroma3.siw.taskmanager.controller.validators;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import it.uniroma3.siw.taskmanager.model.Credentials;
 import it.uniroma3.siw.taskmanager.model.Task;
-import it.uniroma3.siw.taskmanager.model.User;
 import it.uniroma3.siw.taskmanager.repository.CredentialsRepository;
 
+@Component
 public class TaskValidator implements Validator {
 	
 	
@@ -24,7 +25,6 @@ public class TaskValidator implements Validator {
 		Task task = (Task) o;
 		String name = task.getName().trim();
 		String description = task.getDescription().trim();
-		Credentials assigned = task.getAssigned();
 		
 		if (name.isEmpty())
 			errors.rejectValue("name", "required");
