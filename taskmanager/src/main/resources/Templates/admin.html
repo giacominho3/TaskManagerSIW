@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="html://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thyneleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>TaskManager</title>
+</head>
+<body>
+<h1 th:text="'Welcome, Admin' + ${user.firstName} + '!'"></h1>
+<h4><a href="/user/remove">Remove User</a></h4>
+</body>
+</html>

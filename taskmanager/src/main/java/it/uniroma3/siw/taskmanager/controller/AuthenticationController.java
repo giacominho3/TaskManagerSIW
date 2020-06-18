@@ -82,7 +82,7 @@ public class AuthenticationController {
 		this.credentialsValidator.validate (credentials, credentialsBindingResult);
 		this.credentialsValidator.isCorrect (credentials);
 		
-		if (credentialsBindingResult.hasErrors() || )
+		if (credentialsBindingResult.hasErrors()|| )
 		
 	}
 	

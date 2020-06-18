@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="html://www.w3.org/1999/xhtml"
+      xmlns:th=https://www.thyneleaf.org">
+<head>
+	<title>TaskManager</title>
+</head>
+
+<body>
+<h1>Your Profile</h1>
+	<table>
+		<tr><td>Username</td><td th:text="${credentials.userName}">...</td></tr>
+		<tr><td>First Name</td><td th:text="${loggedUser.firstName}">...</td></tr>
+		<tr><td>Last Name</td><td th:text="${loggedUser}">...</td></tr>
+		<tr><td>Role</td><td th:text="${credentials.role}">...</td></tr>
+		<tr><td>Registered at: </td><td> th:text="${loggedUser.creationTimestamp}">...</td><td>
+		<tr><td>Last Update at: </td><td th:text="${loggedUser.lastUpdateTimestamp}">...</td><td>
+	</table>
+</body>
+</html>
+
