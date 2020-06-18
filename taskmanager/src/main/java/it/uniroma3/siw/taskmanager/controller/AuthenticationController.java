@@ -62,28 +62,4 @@ public class AuthenticationController {
 		return "registerUser";
 	}
 	
-	@RequestMapping (value = {"/login"}, method = RequestMethod.GET)
-	public String loginDisplay (Model model) {
-		User loggedUser = sessionData.getLoggedUser();
-		Credentials credentials = sessionData.getLoggedCredentials();
-		
-		model.addAttribute("loggedUser", loggedUser);
-		model.addAttribute("credentials", credentials);
-		
-		return "userLogin";
-	}
-	
-	
-	@RequestMapping (value = {"/login"}, method = RequestMethod.POST)
-	public String processLogin (@Valid @ModelAttribute ("credentialsForm") Credentials credentials,
-			BindingResult credentialsBindingResult,
-			Model model) {
-		
-		this.credentialsValidator.validate (credentials, credentialsBindingResult);
-		this.credentialsValidator.isCorrect (credentials);
-		
-		if (credentialsBindingResult.hasErrors() || )
-		
-	}
-	
 }
