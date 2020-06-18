@@ -144,6 +144,10 @@ public class Project {
 		this.members.add(member);
 	}
 	
+	public void addTask (Task task) {
+		this.tasks.add(task);
+	}
+	
 	
 	//metodi per la gestione delle date e degli orari di creazione e modifica
 	
@@ -199,5 +203,4 @@ public class Project {
 		return true;
 	}
 	
-
 }
