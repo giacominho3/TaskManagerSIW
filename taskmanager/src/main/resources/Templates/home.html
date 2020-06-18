@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns="html://www.w3.org/1999/xhtml"
-      xmlns:th=https://www.thyneleaf.org">
+      xmlns:th="https://www.thyneleaf.org">
 <head>
 	<meta charset="UTF-8">
 	<title>TaskManager</title>
@@ -9,7 +9,7 @@
 <body>
 <h1 th:text="'Welcome' + ${loggedUser.firstName} + '!'"></h1>
 <h4><a href="/projects">My projects</a></h4>
-<h4><a href="/projects/add" >Create new projects</a></h4/>
+<h4><a href="/projects/add" >Create new projects</a></h4>
 <h4><a href="/users/me" >Profile</a></h4>
 <h4><a href="/logout">Logout</a></h4>
 </body>
