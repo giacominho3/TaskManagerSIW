@@ -18,6 +18,7 @@ public class Task {
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	private Long id;
 	
+
 	@Column (nullable = false, length = 100)
 	private String name;
 	
@@ -39,8 +40,15 @@ public class Task {
 	@ManyToOne
 	private Project project;
 	
-	@ManyToOne 
-	private User assigned;
+	@ManyToOne
+	private Credentials assigned;
+	
+	//costruttore vuoto
+	
+	public Task () {
+		
+		this.assigned = new Credentials();
+	}
 	
 	
 	//costruttore parametrico
@@ -54,7 +62,16 @@ public class Task {
 		this.creationTimeStamp = LocalDateTime.now();
 		this.updateTimeStamp = LocalDateTime.now();
 	}
+	
+	public Long getId() {
+		return id;
+	}
 
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 
 	public String getName() {
 		return name;
@@ -73,6 +90,16 @@ public class Task {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+
+	public Credentials getAssigned() {
+		return assigned;
+	}
+
+
+	public void setAssigned(Credentials assigned) {
+		this.assigned = assigned;
 	}
 
 

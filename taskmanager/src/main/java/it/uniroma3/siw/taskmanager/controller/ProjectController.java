@@ -12,13 +12,17 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.taskmanager.controller.session.SessionData;
 import it.uniroma3.siw.taskmanager.controller.validators.ProjectValidator;
 import it.uniroma3.siw.taskmanager.model.User;
+import it.uniroma3.siw.taskmanager.service.CredentialsService;
 import it.uniroma3.siw.taskmanager.service.ProjectService;
 import it.uniroma3.siw.taskmanager.service.UserService;
+import it.uniroma3.siw.taskmanager.model.Credentials;
 import it.uniroma3.siw.taskmanager.model.Project;
+import it.uniroma3.siw.taskmanager.model.Task;
 
 @Controller
 public class ProjectController {
@@ -34,6 +38,9 @@ public class ProjectController {
 	
 	@Autowired
 	SessionData sessionData;
+	
+	@Autowired
+	CredentialsService credentialsService;
 	
 	
 	@RequestMapping (value = {"/projects"}, method = RequestMethod.GET)
@@ -54,15 +61,33 @@ public class ProjectController {
 			return "redirect:/projects";
 		
 		List <User> members = userService.getMembers(project);
+		List <Task> tasks = project.getTasks();
 		if(!project.getOwner().equals(loggedUser) && !members.contains(loggedUser))
 			return "redirect:/projects";
 		
 		model.addAttribute("loggedUser", loggedUser);
 		model.addAttribute("project", project);
 		model.addAttribute("members", members);
+		model.addAttribute("tasks", tasks);
+		model.addAttribute("credentialsForm", new Credentials ());
 		
 		return "project";
 	}
+	
+	@RequestMapping (value = {"/projects/{projectId}/share"}, method = RequestMethod.POST)
+	public String shareProject (@RequestParam("username") String username, @PathVariable Long id) {
+		Project project = projectService.getProject(id);
+		Credentials credentials = this.credentialsService.getCredentials(username);
+		
+		if (credentials != null) {
+			this.projectService.shareProjectWithUser(project, credentials.getUser());
+			
+			return "redirect:/project/" + id;
+		}
+		
+		return "redirect:/home";
+	}
+	
 	
 	
 	@RequestMapping (value = {"/projects/add"}, method = RequestMethod.GET)
