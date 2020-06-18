@@ -14,8 +14,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
+import javax.persistence.Table;
 
-@Entity
+@Entity 
+@Table (name = "users")
 public class User {
 	
 	

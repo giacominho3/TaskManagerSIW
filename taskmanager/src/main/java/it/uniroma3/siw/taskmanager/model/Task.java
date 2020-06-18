@@ -43,13 +43,13 @@ public class Task {
 	private Project project;
 	
 	@ManyToOne
-	private Credentials assigned;
+	private User assigned;
 	
 	//costruttore vuoto
 	
 	public Task () {
 		
-		this.assigned = new Credentials();
+		this.assigned = new User();
 	}
 	
 	
@@ -95,12 +95,12 @@ public class Task {
 	}
 
 
-	public Credentials getAssigned() {
+	public User getAssigned() {
 		return assigned;
 	}
 
 
-	public void setAssigned(Credentials assigned) {
+	public void setAssigned(User assigned) {
 		this.assigned = assigned;
 	}
 
